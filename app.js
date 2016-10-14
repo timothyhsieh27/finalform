@@ -27,11 +27,13 @@ function showStatustext(counter, goal) {
 }
 
 function showWin(counter, goal) {
-  var wintext = statusLine.text("THIS IS MY FINAL FORM")
+  var finalForm = $('.final').val()
+  var wintext = statusLine.text("You have reached your final form! You are now " + finalForm +"!")
   display.append(wintext)
 }
 
 function showFail(counter, goal) {
-  var failtext = statusLine.text("This isn't even my final form.")
+  var currentForm = $('.current').val()
+  var failtext = statusLine.text("You are still " + currentForm + ". Keep training!")
   display.append(failtext)
 }

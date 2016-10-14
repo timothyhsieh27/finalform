@@ -3,12 +3,11 @@ var display = $('#display')
 var base = 0
 var clickLine = $("<p></p>")
 var statusLine = $("<p></p>")
-var goal = 5
-// var goal = $('.goal').val()
 
 trainButton.click(function() {
+  var goal = $('.goal').val()
   var counter = (base += 1)
-  showStatustext(counter)
+  showStatustext(counter, goal)
   appendCountertext(counter)
 })
 
@@ -18,21 +17,21 @@ function appendCountertext(counter) {
   console.log("You have clicked " + counter + " times.")
 }
 
-function showStatustext(counter) {
+function showStatustext(counter, goal) {
   if(counter >= goal) {
-    showWin(counter)
+    showWin(counter, goal)
   }
   else {
-    showFail(counter)
+    showFail(counter, goal)
   }
 }
 
-function showWin(counter) {
+function showWin(counter, goal) {
   var wintext = statusLine.text("THIS IS MY FINAL FORM")
   display.append(wintext)
 }
 
-function showFail(counter) {
+function showFail(counter, goal) {
   var failtext = statusLine.text("This isn't even my final form.")
   display.append(failtext)
 }

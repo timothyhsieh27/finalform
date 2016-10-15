@@ -12,9 +12,9 @@ trainButton.click(function() {
 })
 
 function appendCountertext(counter) {
-  var countertext = clickLine.text("You have clicked " + counter + " times.")
+  var countertext = clickLine.text("You trained " + counter + " times.")
   display.append(countertext)
-  console.log("You have clicked " + counter + " times.")
+  console.log("You clicked " + counter + " times.")
 }
 
 function showStatustext(counter, goal) {

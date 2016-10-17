@@ -9,6 +9,20 @@ trainButton.click(function() {
   var counter = (base += 1)
   showStatustext(counter, goal)
   appendCountertext(counter)
+
+  var finalForm = $('.final').val()
+  var currentForm = $('.current').val()
+
+  $.ajax({
+    method: 'POST',
+    url: '/api/trainee',
+    data: {
+      currentform: currentForm,
+      finalform: finalForm,
+      trainnumber: counter
+    },
+    dataType: 'json'
+  })
 })
 
 function appendCountertext(counter) {

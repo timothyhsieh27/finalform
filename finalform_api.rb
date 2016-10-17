@@ -2,6 +2,13 @@ require 'sinatra'
 require 'active_record'
 require 'yaml'
 require_relative 'model/trainee'
+require 'sinatra/cross_origin'
+
+register Sinatra::CrossOrigin
+
+configure do
+  enable :cross_origin
+end
 
 ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'])
 
@@ -28,7 +35,7 @@ end
 # GET /api/ - return individual/all as JSON
 get '/api/trainee' do
   currentform = params['currentform']
-  finalform =params['finalform']
+  finalform = params['finalform']
   trainnumber = params['trainnumber']
 
   if !currentform.nil?

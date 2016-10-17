@@ -12,18 +12,61 @@ trainButton.click(function() {
 
   var finalForm = $('.final').val()
   var currentForm = $('.current').val()
-
-  $.ajax({
-    method: 'POST',
-    url: '/api/trainee',
-    data: {
-      currentform: currentForm,
-      finalform: finalForm,
-      trainnumber: counter
-    },
-    dataType: 'json'
-  })
+  // create(currentForm, finalForm, counter)
+  update(currentForm, finalForm, counter)
 })
+
+// function retrieve() {
+//   $.ajax({
+//   method: 'GET',
+//   url: '/api/trainee/',
+//   data: {
+//     currentform: currentForm,
+//     finalform: finalForm,
+//     trainnumber: counter
+//   },
+//   dataType: 'json'
+//   })
+// }
+
+function create(currentForm, finalForm, counter) {
+  $.ajax({
+  method: 'POST',
+  url: '/api/trainee/',
+  data: {
+    currentform: currentForm,
+    finalform: finalForm,
+    trainnumber: counter
+  },
+  dataType: 'json'
+  })
+}
+
+function update(currentForm, finalForm, counter) {
+  $.ajax({
+  method: 'PUT',
+  url: '/api/trainee/' + variableidnumbafromget + '',
+  data: {
+    currentform: currentForm,
+    finalform: finalForm,
+    trainnumber: counter
+  },
+  dataType: 'json'
+}).done(function(){
+  console.log("it's working!!");
+}).fail(function(){
+  console.log("faiure");
+});
+}
+//
+// $.ajax({
+//     type: 'POST', // Use POST with X-HTTP-Method-Override or a straight PUT if appropriate.
+//     dataType: 'json', // Set datatype - affects Accept header
+//     url: "http://example.com/people/1", // A valid URL
+//     headers: {"X-HTTP-Method-Override": "PUT"}, // X-HTTP-Method-Override set to PUT.
+    // data: '{"name": "Dave"}' // Some data e.g. Valid JSON as a string
+// });
+
 
 function appendCountertext(counter) {
   var countertext = clickLine.text("You trained " + counter + " times.")
